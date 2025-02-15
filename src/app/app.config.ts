@@ -6,14 +6,12 @@ import { provideHttpClient } from '@angular/common/http';
 import { MyPreset } from './mypreset';
 
 import { routes } from './app.routes';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    provideHttpClientTesting(),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
