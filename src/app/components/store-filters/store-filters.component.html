@@ -1,0 +1,85 @@
+<section class="rounded-xl bg-white w-60">
+  <div class="p-4 border-b border-b-[#E0E0E0]">
+    <h6 class="text-sm text-[#757575] font-bold mb-3">Category</h6>
+
+    <form class="flex flex-col gap-1.5" [formGroup]="categoryFormGroup">
+      @for (category of categoryOptions; track $index) {
+      <div class="flex items-center gap-2">
+        <input
+          type="radio"
+          [id]="category"
+          [value]="category"
+          class="accent-purple"
+          formControlName="selectedCategory"
+        />
+        <label [for]="category" class="font-bold text-sm">{{ category }}</label>
+      </div>
+      }
+    </form>
+  </div>
+  <div class="p-4 border-b border-b-[#E0E0E0]">
+    <h6 class="text-sm text-[#757575] font-bold mb-3">Price</h6>
+    <section class="flex flex-col gap-5">
+      <p-slider
+        [range]="true"
+        styleClass="w-52"
+        [min]="0"
+        [max]="1000000"
+        [(ngModel)]="priceRange"
+      />
+      <section class="flex items-center gap-2.5">
+        <div
+          class="rounded-sm border border-[#BDBDBD] grid place-items-center p-1 grow h-8"
+        >
+          <p class="text-sm font-medium">
+            {{ priceRange()[0] }}
+          </p>
+        </div>
+        -
+        <div
+          class="rounded-sm border border-[#BDBDBD] grid place-items-center p-1 grow h-8"
+        >
+          <p class="text-sm font-medium">
+            {{ priceRange()[1] }}
+          </p>
+        </div>
+      </section>
+    </section>
+  </div>
+  <div class="p-4 border-b border-b-[#E0E0E0]">
+    <h6 class="text-sm text-[#757575] font-bold mb-3">Percentage</h6>
+
+    <form class="flex flex-col gap-1.5" [formGroup]="percentageFormGroup">
+      @for (option of percentageOptions; track $index) {
+      <div class="flex items-center gap-2">
+        <input
+          type="radio"
+          [id]="option"
+          [value]="option"
+          class="accent-purple"
+          formControlName="selectedPercentage"
+        />
+        <label [for]="option" class="font-bold text-sm">{{ option }}</label>
+      </div>
+      }
+    </form>
+  </div>
+  <div class="p-4 border-b border-b-[#E0E0E0]">
+    <h6 class="text-sm text-[#757575] font-bold mb-3">Location</h6>
+
+    <form class="flex flex-col gap-1.5" [formGroup]="locationFormGroup">
+      @for (option of locationOptions; track $index) {
+      <div class="flex items-center gap-2">
+        <input
+          type="radio"
+          [id]="option"
+          [value]="option"
+          class="accent-purple"
+          formControlName="selectedLocation"
+        />
+        <label [for]="option" class="font-bold text-sm">{{ option }}</label>
+      </div>
+      }
+    </form>
+  </div>
+</section>

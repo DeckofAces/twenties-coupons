@@ -1,0 +1,47 @@
+<section
+  class="border border-[#E0E0E0] rounded-xl bg-[#FAF7FD] px-3 py-4 xl:py-6 xl:px-4"
+>
+  <div class="flex items-center justify-between mb-4">
+    <img
+      [src]="cardData().company_logo ?? 'icons/unavailable-image-icon.jpg'"
+      alt=""
+      width="40"
+      height="40"
+    />
+
+    <div class="flex items-center gap-3 text-purple">
+      <button pTooltip="Send" tooltipPosition="top">
+        <span class="material-symbols-outlined"> send </span>
+      </button>
+      <button pTooltip="Bookmark" tooltipPosition="top">
+        <span
+          class="material-symbols-outlined"
+          [ngClass]="{ filled: cardData().bookmarked }"
+        >
+          bookmark
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="flex items-center justify-between mb-4 font-bold">
+    <p [pTooltip]="cardData().company_name" tooltipPosition="top">
+      {{ cardData().company_name | truncate : 10 }}
+    </p>
+    <p>-{{ cardData().coupon_discount }}%</p>
+  </div>
+  <p
+    [pTooltip]="cardData().description"
+    tooltipPosition="top"
+    class="mb-6 font-medium text-xs text-[#616161]"
+  >
+    {{ cardData().description | truncate }}
+  </p>
+  <button
+    class="p-3 border rounded-lg grid place-items-center text-sm font-bold w-full hover:border-purple/50 active:border-purple hover:text-purple/50 active:text-purple"
+  >
+    <div class="flex gap-2 items-center">
+      See Offer
+      <span class="material-symbols-outlined"> trending_flat </span>
+    </div>
+  </button>
+</section>

@@ -1,0 +1,88 @@
+<section>
+  <header
+    class="flex flex-col lg:flex-row items-start gap-2 lg:items-center justify-between lg:gap-9 w-full"
+  >
+    <div class="flex items-center gap-2 grow">
+      <button class="lg:hidden" (click)="showDialog()">
+        <span class="material-symbols-outlined"> tune </span>
+      </button>
+      <div
+        class="px-7 py-3 border border-[#616161] rounded-full flex items-center justify-between grow"
+      >
+        <input
+          type="search"
+          name=""
+          id=""
+          placeholder="Search for store items"
+          class="font-medium placeholder:font-medium w-full outline-none"
+          #searchQuery
+          (input)="search(searchQuery.value)"
+        />
+        <img src="/icons/search.svg" alt="" class="" />
+      </div>
+    </div>
+    <div class="px-6 py-3.5 flex items-center gap-4" (click)="toggle($event)">
+      <div class="flex items-center gap-1 text-lg">
+        <span class="font-bold"> Sort By: </span>
+        <button>{{ sortDirection() }}</button>
+      </div>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 17L22 7" stroke="#9444CB" stroke-linecap="round" />
+        <path d="M12 17L2 7" stroke="#9444CB" stroke-linecap="round" />
+      </svg>
+    </div>
+  </header>
+  <section class="grid mt-6 mb-5">
+    @for (entry of paginatedCoupons(); track $index) {
+    <app-item-card [cardData]="entry" />
+    @if (($index + 1) % 12 === 0) {
+    <div class="banner">
+      <img src="images/banner-advert.png" alt="Promo Banner" />
+    </div>
+    } }
+  </section>
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first()"
+    [rows]="rows()"
+    [totalRecords]="filteredCoupons().length"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} - {last} of {totalRecords} pages"
+    [showFirstLastIcon]="false"
+    [alwaysShow]="false"
+  />
+</section>
+
+<ng-container>
+  <p-popover #op>
+    <div class="flex flex-col gap-4">
+      <div>
+        <ul class="list-none p-0 m-0 flex flex-col">
+          @for (option of sortDirectionOptions; track $index) {
+          <li
+            class="px-1 py-2 cursor-pointer rounded-border"
+            (click)="sort(option)"
+          >
+            {{ option }}
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </p-popover>
+</ng-container>
+<ng-container>
+  <p-dialog
+    [modal]="true"
+    [(visible)]="isFiltersDialogVisible"
+    [dismissableMask]="true"
+  >
+    <app-store-filters />
+  </p-dialog>
+</ng-container>

@@ -1,0 +1,104 @@
+<section class="w-full bg-white">
+  <nav
+    class="w-11/12 2xl:w-10/12 mx-auto py-4 2xl:py-6 flex items-center justify-between"
+  >
+    <section class="flex items-center">
+      <img src="icons/logo.svg" alt="logo" />
+      <div
+        class="ml-3 md:ml-4 pr-3 2xl:ml-9 2xl:px-6 border-r border-r-black/30"
+      >
+        <a class="font-medium">The What?</a>
+      </div>
+    </section>
+    <button
+      (click)="isDrawerVisible = true"
+      class="grid xl:hidden place-items-center"
+    >
+      <span class="material-symbols-outlined"> menu </span>
+    </button>
+    <section
+      class="hidden xl:flex items-center gap-6 px-6 *:cursor-pointer mr-auto"
+    >
+      <a class="flex items-center gap-1">
+        <img src="icons/mentors-icon.png" alt="" />
+        Mentors
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/events-icon.png" alt="" />
+        Events
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/coupon-icon.png" alt="" />
+        Coupons
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/courses-icon.png" alt="" />
+        Courses
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/jobs-icon.png" alt="" />
+        Jobs
+      </a>
+    </section>
+    <section class="hidden xl:flex items-center">
+      <button class="pr-5 border-r border-r-black/30 cursor-pointer">
+        <img src="icons/search-icon.png" alt="" />
+      </button>
+      <div class="flex items-center gap-4 ml-4 *:cursor-pointer">
+        <button
+          class="border border-black/30 rounded-xl px-5 py-3 text-purple font-bold"
+        >
+          Login
+        </button>
+        <button class="bg-purple rounded-xl px-5 py-3 text-white font-bold">
+          Join The Tribe
+        </button>
+      </div>
+    </section>
+  </nav>
+</section>
+
+<ng-container>
+  <p-drawer
+    [(visible)]="isDrawerVisible"
+    header="The What?"
+    [blockScroll]="isDrawerVisible"
+  >
+    <section class="gap-6 px-6 *:cursor-pointer space-y-3 mb-4">
+      <a class="flex items-center gap-1">
+        <img src="icons/mentors-icon.png" alt="" />
+        Mentors
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/events-icon.png" alt="" />
+        Events
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/coupon-icon.png" alt="" />
+        Coupons
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/courses-icon.png" alt="" />
+        Courses
+      </a>
+      <a class="flex items-center gap-1">
+        <img src="icons/jobs-icon.png" alt="" />
+        Jobs
+      </a>
+    </section>
+    <section class="">
+      <div class="flex flex-col items-center gap-4 ml-4 *:cursor-pointer">
+        <button
+          class="border border-black/30 rounded-xl px-5 py-2 text-purple w-full font-bold"
+        >
+          Login
+        </button>
+        <button
+          class="bg-purple rounded-xl px-5 py-2 text-white w-full font-bold"
+        >
+          Join The Tribe
+        </button>
+      </div>
+    </section>
+  </p-drawer>
+</ng-container>
