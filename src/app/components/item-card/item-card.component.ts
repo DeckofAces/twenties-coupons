@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { Offer } from '../../core/types';
 import { TruncatePipe } from '../../core/pipes/truncate.pipe';
 import { TooltipModule } from 'primeng/tooltip';
@@ -12,4 +12,9 @@ import { NgClass } from '@angular/common';
 })
 export class ItemCardComponent {
   cardData = input.required<Offer>();
+  // @Input('cardData') cardDataInput!: Offer;
+  //
+  // cardData() {
+  //   return this.cardDataInput;
+  // }
 }
